@@ -8,7 +8,7 @@ export type RenovateSpanOptions = {
 } & SpanOptions;
 
 export type RenovateSpanAttributes = {
-  [ATTR_RENOVATE_SPLIT]: RenovateSplit;
+  [ATTR_RENOVATE_SPLIT]?: RenovateSplit;
 } & Attributes;
 
 /**
