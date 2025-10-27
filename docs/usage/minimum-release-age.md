@@ -43,6 +43,10 @@ Consider that:
 
 The current behaviour in Renovate is that we will treat the dependency without a release timestamp **as if it has passed** the `minimumReleaseAge`, and will **immediately suggest that dependency update**.
 
+<!-- prettier-ignore -->
+!!! warning
+    This is counter-intuitive behaviour.
+
 ### What happens when an update is not yet passing the minimum release age checks?
 
 If an update is pending the minimum release age checks, it will be found under the Dependency Dashboard in the "Pending Status Checks".
