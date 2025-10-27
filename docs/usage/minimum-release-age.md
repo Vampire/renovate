@@ -1,5 +1,7 @@
 # Minimum Release Age
 
+## What is Minimum Release Age?
+
 `minimumReleaseAge` is a feature to require Renovate to wait for an amount of time before suggesting a dependency update.
 
 If `minimumReleaseAge` is set to a time duration _and_ the update has a release timestamp header, then Renovate will check if the set duration has passed.
@@ -24,7 +26,7 @@ The following configuration options can be used to enable and tune the functiona
 
 ## FAQs
 
-### What happens if the datasource and/or registry does not provide a release timestamp, when using `minimumReleaseAge`?
+### What happens if the Datasource and/or registry does not provide a release timestamp, when using `minimumReleaseAge`?
 
 <!-- prettier-ignore -->
 !!! warning
@@ -59,9 +61,10 @@ Note that you will also need to [verify if the registry you're using](#which-reg
 
 ### Which registries support release timestamps?
 
+We do not currently have an exhaustive list of registries which support release timestamps.
+
 If you use a custom registry, for instance as a pull-through cache, [additional configuration may be required](#how-do-i-add-timestamp-data-to-custom-registries).
 
-We do not currently have an exhaustive list of registries which support release timestamps.
 However, is _likely_ that if you are using a public registry (i.e. `registry.npmjs.org`, `repo1.maven.org`, etc) the release timestamp data will be present.
 
 If you are using a custom registry, or unsure about a public registry, you can confirm this using Renovate's debug logs by looking for the `packageFiles with updates` debug log line, which may contain a `releaseTimestamp` field in dependency updates:
@@ -335,21 +338,33 @@ For `minimumReleaseAge` to work, the Maven source must return reliable `last-mod
 If your custom Maven source registry is **pull-through** and does _not_ support the `last-modified` header, like GAR (Google Artifact Registry's Maven implementation) then you can extend the Maven source registry URL with `https://repo1.maven.org/maven2` as the first item. Then the `currentVersionTimestamp` via `last-modified` will be taken from Maven central for public dependencies.
 
 ```json
-"registryUrls": [
-  "https://repo1.maven.org/maven2",
-  "https://europe-maven.pkg.dev/org-artifacts/maven-virtual"
-],
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "matchDatasources": ["maven"],
+      "registryUrls": [
+        "https://repo1.maven.org/maven2",
+        "https://europe-maven.pkg.dev/org-artifacts/maven-virtual"
+      ]
+    }
+  ]
+}
 ```
 
 #### Pypi Datasource
 
 ```json
 {
-  "matchDatasources": ["pypi"],
-  "registryUrls": [
-    "https://pypi.org/pypi/",
-    // NOTE TODO
-    "https://DOMAIN.d.codeartifact.REGION.amazonaws.com/pypi/REPO/simple/"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "matchDatasources": ["pypi"],
+      "registryUrls": [
+        "https://pypi.org/pypi/",
+        "https://custom-registry.example.com/pypi/some-repo/simple/"
+      ]
+    }
   ]
 }
 ```
