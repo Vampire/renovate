@@ -55,7 +55,7 @@ You can force the dependency update by requesting it via the Dependency Dashboar
 
 You can confirm if your datasource supports the release timestamp by viewing [the documentation for the given datasource](./modules/datasource/index.md).
 
-Note that you will also need to [verify if the registry you're using](#which-registries-support-timestamps) provides the release timestamp.
+Note that you will also need to [verify if the registry you're using](#which-registries-support-release-timestamps) provides the release timestamp.
 
 ### Which registries support release timestamps?
 
