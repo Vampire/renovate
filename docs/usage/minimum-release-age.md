@@ -28,36 +28,41 @@ The following configuration options can be used to enable and tune the functiona
 
 ## Warnings for users pre-Renovate 42
 
+<!-- prettier-ignore -->
 !!! warning
-Renovate 42 changes the defaults **??**
-Until then, the absence of this default can be configured using **??** (added in 41.150.0) **??**
+    Renovate 42 changes the defaults **??**
+    Until then, the absence of this default can be configured using **??** (added in 41.150.0) **??**
 
 ## FAQs
 
 ### What happens if the datasource and/or registry does not provide a release timestamp, when using `minimumReleaseAge`?
 
+<!-- prettier-ignore -->
 !!! warning
-TODO
+    Renovate 42 [will change](https://github.com/renovatebot/renovate/discussions/38841) the behaviour detailed below.
+    In Renovate 42, the absence of a release timestamp will be treated as if the release is not yet past the timestamp, which provides a safer default.
+    Until Renovate 42, you can opt into this behaviour using [`minimumReleaseAgeBehaviour=timestamp-required`](./configuration-options.md#minimumreleaseagebehaviour) (added in 41.150.0)
 
-Prior to Renovate 42, **??**.
+Consider that:
 
-Users are recommended to set
+- we have set `minimumReleaseAge` to apply to a given dependency
+- that dependency has 3 updates available
+  - 2 of which have a release timestamp that has not yet passed
+  - 1 of which does not have a release timestamp
 
-Users of **??** are recommended to set **??** (added in 41.150.0) **??**
-
-As of [the upcoming Renovate 42 release](https://github.com/renovatebot/renovate/discussions/38841) this will jkjk **??**
+The current behaviour in Renovate is that we will treat the dependency without a release timestamp **as if it has passed** the `minimumReleaseAge`, and will **immediately suggest that dependency update**.
 
 ### What happens when an update is not yet passing the minimum release age checks?
 
-If an update is pending the **??**, it will be found under the Dependency Dashboard in the "Pending Status Checks" and **??**.
+If an update is pending the minimum release age checks, it will be found under the Dependency Dashboard in the "Pending Status Checks".
 
-You can **??** by enabling the Dependency Dashboard, or if you are self-hosting, you can use the [`checkedBranches`](https://docs.renovatebot.com/self-hosted-configuration/#checkedbranches) to force the **??**
+You can force the dependency update by requesting it via the Dependency Dashboard, or if you are self-hosting, you can use the [`checkedBranches`](https://docs.renovatebot.com/self-hosted-configuration/#checkedbranches) to force the branch creation.
 
 ### Which datasources support release timestamps?
 
 You can confirm if your datasource supports the release timestamp by viewing [the documentation for the given datasource](./modules/datasource/index.md).
 
-Note that you will also need to [verify if the registry you're using](#which-registries-support-minimumreleaseage) provides the release timestamp.
+Note that you will also need to [verify if the registry you're using](#which-registries-support-timestamps) provides the release timestamp.
 
 ### Which registries support release timestamps?
 

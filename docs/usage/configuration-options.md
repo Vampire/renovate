@@ -2755,8 +2755,6 @@ You can confirm if your datasource supports the release timestamp by viewing [th
     ```
     <!-- markdownlint-enable MD046 -->
 
-<!-- TODO -->
-
 <!-- prettier-ignore -->
 !!! note
     Configuring this option will add a `renovate/stability-days` option to the status checks.
