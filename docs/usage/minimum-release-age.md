@@ -14,10 +14,6 @@ Renovate does not wait until the package has seen no releases for x time-duratio
 When the time passed since the release is _less_ than the set `minimumReleaseAge`: Renovate adds a "pending" status check to that update's branch.
 After enough days have passed: Renovate replaces the "pending" status with a "passing" status check.
 
-The datasource that Renovate uses must have a release timestamp for the `minimumReleaseAge` config option to work.
-Some datasources may have a release timestamp, but in a format Renovate does not support.
-In those cases a feature request needs to be implemented.
-
 ## Configuration options
 
 The following configuration options can be used to enable and tune the functionality of Minimum Release Age:
@@ -52,6 +48,10 @@ If an update is pending the minimum release age checks, it will be found under t
 You can force the dependency update by requesting it via the Dependency Dashboard, or if you are self-hosting, you can use the [`checkedBranches`](https://docs.renovatebot.com/self-hosted-configuration/#checkedbranches) to force the branch creation.
 
 ### Which datasources support release timestamps?
+
+The datasource that Renovate uses must have a release timestamp for the `minimumReleaseAge` config option to work.
+Some datasources may have a release timestamp, but in a format Renovate does not support.
+In those cases a feature request needs to be implemented.
 
 You can confirm if your datasource supports the release timestamp by viewing [the documentation for the given datasource](./modules/datasource/index.md).
 
