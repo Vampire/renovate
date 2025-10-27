@@ -26,13 +26,6 @@ The following configuration options can be used to enable and tune the functiona
 - [`minimumReleaseAgeBehaviour`](./configuration-options.md#minimumreleaseagebehaviour)
 - [`internalChecksFilter`](./configuration-options.md#internalchecksfilter)
 
-## Warnings for users pre-Renovate 42
-
-<!-- prettier-ignore -->
-!!! warning
-    Renovate 42 changes the defaults **??**
-    Until then, the absence of this default can be configured using **??** (added in 41.150.0) **??**
-
 ## FAQs
 
 ### What happens if the datasource and/or registry does not provide a release timestamp, when using `minimumReleaseAge`?
@@ -328,12 +321,8 @@ Will then output:
 
 Notice that this indicates that:
 
-- There are 3 packages that do not have a release timestamp, across different Managers and Datasources
-- There are also jkjk **??**
-
-- None of the dependencies hosted on the `ghcr.io` registry have a release timestamp (**TODO** - https://github.com/renovatebot/renovate/discussions/38143 / **??**)
-  - Including the digest updates
-- The renovate-config-presets manager doesn't provide support for release timestamps
+- There are 3 dependencies that do not have a release timestamp, across different Managers and Datasources
+- There are 3 dependency updates, where neither the dependency nor the dependency update itself have a release timestamp
 
 ### How do I add timestamp data to custom registries?
 
