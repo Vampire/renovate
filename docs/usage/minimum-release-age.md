@@ -24,12 +24,13 @@ The following configuration options can be used to enable and tune the functiona
 
 - [`minimumReleaseAge`](./configuration-options.md#minimumreleaseage)
 - [`minimumReleaseAgeBehaviour`](./configuration-options.md#minimumreleaseagebehaviour)
+- [`internalChecksFilter`](./configuration-options.md#internalchecksfilter)
 
 ## Warnings for users pre-Renovate 42
 
 !!! warning
-Renovate 42 introduces **??**.
-Until then, **??**
+Renovate 42 changes the defaults **??**
+Until then, the absence of this default can be configured using **??** (added in 41.150.0) **??**
 
 ## FAQs
 
@@ -60,14 +61,12 @@ Note that you will also need to [verify if the registry you're using](#which-reg
 
 ### Which registries support release timestamps?
 
-If you use a custom registry, for instance as a pull-through cache, additional configuration may be required.
+If you use a custom registry, for instance as a pull-through cache, [additional configuration may be required](#how-do-i-add-timestamp-data-to-custom-registries).
 
 We do not currently have an exhaustive list of registries which support release timestamps.
-However, is _likely_ that if you are using a public registry (i.e. `registry.npmjs.org`, `repo1.maven.org`, etc) **??**.
+However, is _likely_ that if you are using a public registry (i.e. `registry.npmjs.org`, `repo1.maven.org`, etc) the release timestamp data will be present.
 
-If you are using a custom registry, **??**
-
-You can confirm if the registry you use provides release timestamps, by looking for the `packageFiles with updates` debug log line, which may contain a `releaseTimestamp` field in dependency updates:
+If you are using a custom registry, or unsure about a public registry, you can confirm this using Renovate's debug logs by looking for the `packageFiles with updates` debug log line, which may contain a `releaseTimestamp` field in dependency updates:
 
 <details>
 
@@ -331,7 +330,7 @@ Notice that this indicates that:
   - Including the digest updates
 - The renovate-config-presets manager doesn't provide support for release timestamps
 
-### How do I **??**?
+### How do I add timestamp data to custom registries?
 
 #### Maven Datasource
 
@@ -355,7 +354,7 @@ If your custom Maven source registry is **pull-through** and does _not_ support 
   "matchDatasources": ["pypi"],
   "registryUrls": [
     "https://pypi.org/pypi/",
-    // NOTE
+    // NOTE TODO
     "https://DOMAIN.d.codeartifact.REGION.amazonaws.com/pypi/REPO/simple/"
   ]
 }
